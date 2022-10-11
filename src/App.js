@@ -5,10 +5,12 @@ import './styles/App.scss';
 function App() {
   return (
     <div className="App">
-      <h1>Whos My Representative?</h1>
-      <div className="tools-container">
-        <PoliticianList />
-        <UserForm />
+      <div className="app-container">
+        <h1>Who&apos;s My Representative?</h1>
+        <div className="tools-container">
+          <PoliticianList />
+          <UserForm />
+        </div>
       </div>
     </div>
   );

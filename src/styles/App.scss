@@ -13,11 +13,23 @@ body {
   align-items: center;
   margin: auto;
   padding: 1.3rem;
-  max-width: 900px;
-  text-align: center;
 
-  .tools-container {
-    display: flex;
-    flex-direction: row;
+  .app-container {
+    display: inline-flex;
+    flex-direction: column;
+
+    h1 {
+      color: #9696f5;
+    }
+
+    h2 {
+      font-weight: normal;
+    }
+
+    .tools-container {
+      display: flex;
+      flex-direction: row;
+      border-top: 2px solid #f4f4f4;
+    }
   }
 }
