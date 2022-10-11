@@ -1,0 +1,15 @@
+.politician-list {
+    text-align: left;
+
+    table {
+        font-weight: normal;
+
+        .table-header {
+            font-weight: bold;
+        }
+
+        .name-cell {
+            min-width: 24rem;
+        }
+    }
+}
