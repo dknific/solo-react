@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import Dropdown from 'react-dropdown';
 import PoliticianList from './components/PoliticianList';
 import InfoForm from './components/InfoForm';
+
 import { arrayOfStates, baseURL } from './Constants';
 import './styles/App.scss';
 import 'react-dropdown/style.css';
@@ -15,7 +16,12 @@ function App() {
   const [selectedPolitician, setSelectedPolitician] = useState();
 
   useEffect(() => {
-    validateForm();
+    let isValid = false;
+    if (selectedState) {
+      isValid = true;
+    }
+
+    setFormIsValid(isValid);
   }, [selectedState]);
 
   function handleDropDownChange(event) {
@@ -24,15 +30,6 @@ function App() {
 
   function handlePoliticianClick(politicianObj) {
     setSelectedPolitician(politicianObj);
-  }
-
-  function validateForm() {
-    let isValid = false;
-    if (selectedState) {
-      isValid = true;
-    }
-
-    setFormIsValid(isValid);
   }
 
   async function getPoliticians() {
