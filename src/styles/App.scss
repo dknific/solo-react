@@ -12,21 +12,27 @@ body {
   flex-direction: column;
   align-items: center;
   margin: auto;
-  padding: 1.3rem;
+  padding: 1rem;
 
   .app-container {
     display: inline-flex;
     flex-direction: column;
-    width: 680px;
+    width: 100%;
 
     h1 {
       color: #9696f5;
     }
 
     .button-container {
-      display: inline-flex;
-      align-items: center;
+      display: flex;
+      flex-direction: column;
       border-top: 2px solid #f4f4f4;
+
+      .top-container,
+      .bottom-container {
+        display: flex;
+        align-items: center;
+      }
 
       button {
         font-size: 15px;
@@ -35,6 +41,7 @@ body {
         border-radius: 10px;
         border: none;
         opacity: 0.5;
+        height: 36px;
 
         &.active {
           color: #337f33;
@@ -56,10 +63,6 @@ body {
         }
       }
 
-      button:hover {
-        cursor: pointer;
-      }
-
       .Dropdown-root {
         margin: 0 0.6rem;
       }
@@ -71,7 +74,30 @@ body {
 
     .tools-container {
       display: flex;
-      flex-direction: row;
+      flex-direction: column;
+    }
+  }
+}
+@media(min-width: 720px) {
+  .App {
+    padding: 1.3rem;
+
+    .app-container {
+      width: 680px;
+
+      .button-container {
+        display: inline-flex;
+        flex-direction: row;
+        align-items: center;
+
+        button:hover {
+          cursor: pointer;
+        }
+      }
+
+      .tools-container {
+        flex-direction: row;
+      }
     }
   }
 }

@@ -61,12 +61,16 @@ function App() {
       <div className="app-container">
         <h1>Who&apos;s My {isSenatorMode ? ('Senator') : ('Representative')}?</h1>
         <div className="button-container">
-          <p>Searching for</p>
-          <button onClick={() => setIsSenatorMode(false)} className={isSenatorMode ? '' : 'active'}>Representatives</button>
-          <button onClick={() => setIsSenatorMode(true)} className={isSenatorMode ? 'active' : ''}>Senators</button>
-          <p>from </p>
-          <Dropdown options={arrayOfStates} onChange={(event) => handleDropDownChange(event)} />
-          <button disabled={!formIsValid} onClick={() => getPoliticians()} className={`submit-button ${formIsValid && 'submit-valid'}`}>Search</button>
+          <div className="top-container">
+            <p>Searching for</p>
+            <button onClick={() => setIsSenatorMode(false)} className={isSenatorMode ? '' : 'active'}>Representatives</button>
+            <button onClick={() => setIsSenatorMode(true)} className={isSenatorMode ? 'active' : ''}>Senators</button>
+          </div>
+          <div className="bottom-container">
+            <p>from </p>
+            <Dropdown options={arrayOfStates} onChange={(event) => handleDropDownChange(event)} />
+            <button disabled={!formIsValid} onClick={() => getPoliticians()} className={`submit-button ${formIsValid && 'submit-valid'}`}>Search</button>
+          </div>
         </div>
     {
       isLoading 
