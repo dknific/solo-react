@@ -1,6 +1,6 @@
 import '../styles/UserForm.scss';
 
-export function UserForm() {
+export default function UserForm() {
     return (
         <section className="user-input-form">
             <h2>Info</h2>

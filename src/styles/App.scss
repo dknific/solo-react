@@ -22,6 +22,32 @@ body {
       color: #9696f5;
     }
 
+    .button-container {
+      display: inline-flex;
+      align-items: center;
+      border-top: 2px solid #f4f4f4;
+
+      button {
+        font-size: 15px;
+        margin: 0 0.5rem;
+        padding: 0.4rem;
+        border-radius: 10px;
+        border: none;
+        opacity: 0.5;
+
+        &.active {
+          color: #337f33;
+          font-weight: bold;
+          box-shadow: inset 2px 2px #0000004d;
+          opacity: 1;
+        }
+      }
+
+      button:hover {
+        cursor: pointer;
+      }
+    }
+
     h2 {
       font-weight: normal;
     }
@@ -29,7 +55,6 @@ body {
     .tools-container {
       display: flex;
       flex-direction: row;
-      border-top: 2px solid #f4f4f4;
     }
   }
 }
