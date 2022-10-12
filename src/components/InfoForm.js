@@ -11,7 +11,7 @@ export default function InfoForm({ politician }) {
             {politician && politician.district.length > 0 && (<p>District {politician.district}</p>)}
             <p>{politician ? (politician.phone) : 'Phone'}</p>
             <p>{politician ? (politician.office) : 'Office'}</p>
-            <p>{politician ? (<a href={politician.link} target="_blank">Website</a>) : 'Website'}</p>
+            <p>{politician ? (<a href={politician.link} target="_blank" rel="noreferrer">Website</a>) : 'Website'}</p>
         </>
         ) : (
             <p>Click on a senator or representative from the list to see their info.</p>

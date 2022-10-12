@@ -2,11 +2,9 @@ import { useEffect, useState } from 'react';
 import Dropdown from 'react-dropdown';
 import PoliticianList from './components/PoliticianList';
 import InfoForm from './components/InfoForm';
-import { arrayOfStates } from './arrayOfStates';
+import { arrayOfStates, baseURL } from './Constants';
 import './styles/App.scss';
 import 'react-dropdown/style.css';
-
-const baseURL = 'http://localhost:4000';
 
 function App() {
   const [isLoading, setIsLoading] = useState(false);
@@ -22,6 +20,10 @@ function App() {
 
   function handleDropDownChange(event) {
     setSelectedState(event.value);
+  }
+
+  function handlePoliticianClick(politicianObj) {
+    setSelectedPolitician(politicianObj);
   }
 
   function validateForm() {
@@ -52,10 +54,6 @@ function App() {
         <p>Loading results, please wait...</p>
       </div>
     );
-  }
-
-  function handlePoliticianClick(politicianObj) {
-    setSelectedPolitician(politicianObj);
   }
 
   return (
