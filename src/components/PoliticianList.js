@@ -4,7 +4,7 @@ export default function PoliticianList({ data, handleClick, showSenators }) {
     function politicianRow(politician, index) {
         return (
             <tr className="table-data-row" key={index} onClick={() => handleClick(politician)}>
-                <td className="name-cell">{politician.name}</td>
+                <td>{politician.name}</td>
                 <td>{politician.party[0]}</td>
             </tr>
         );
@@ -16,7 +16,7 @@ export default function PoliticianList({ data, handleClick, showSenators }) {
             <table>
                 <tbody>
                     <tr className="table-header">
-                        <th>Name</th>
+                        <th className="name-cell">Name</th>
                         <th>Party</th>
                     </tr>
                     {data.map((politician, index) => politicianRow(politician, index))}

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import Dropdown from 'react-dropdown';
 import PoliticianList from './components/PoliticianList';
-import UserForm from './components/UserForm';
+import InfoForm from './components/InfoForm';
 import { arrayOfStates } from './arrayOfStates';
 import './styles/App.scss';
 import 'react-dropdown/style.css';
@@ -14,7 +14,7 @@ function App() {
   const [isSenatorMode, setIsSenatorMode] = useState(false);
   const [selectedState, setSelectedState] = useState();
   const [politicianList, setPoliticianList] = useState([]);
-  const [selectedPolitician, setSelectedPolitician] = useState({});
+  const [selectedPolitician, setSelectedPolitician] = useState();
 
   useEffect(() => {
     validateForm();
@@ -36,6 +36,7 @@ function App() {
   async function getPoliticians() {
     if (formIsValid) {
       setIsLoading(true);
+      setSelectedPolitician();
       const searchMode = isSenatorMode ? 'senators' : 'representatives';
       const apiURL = `${baseURL}/${searchMode}/${selectedState}`;
       const response = await fetch(apiURL).then(res => res.json());
@@ -75,7 +76,7 @@ function App() {
         : (
         <div className="tools-container">
           <PoliticianList data={politicianList} showSenators={isSenatorMode} handleClick={handlePoliticianClick} />
-          <UserForm politician={selectedPolitician} />
+          <InfoForm politician={selectedPolitician} />
         </div>
         )
       }
