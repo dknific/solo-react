@@ -1,9 +1,9 @@
 import '../styles/PoliticianList.scss';
 
-export default function PoliticianList({ data, showSenators }) {
+export default function PoliticianList({ data, handleClick, showSenators }) {
     function politicianRow(politician, index) {
         return (
-            <tr className="table-data-row" key={index}>
+            <tr className="table-data-row" key={index} onClick={() => handleClick(politician)}>
                 <td className="name-cell">{politician.name}</td>
                 <td>{politician.party[0]}</td>
             </tr>

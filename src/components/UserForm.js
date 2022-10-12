@@ -1,16 +1,14 @@
 import '../styles/UserForm.scss';
 
-export default function UserForm() {
+export default function UserForm({ politician }) {
     return (
         <section className="user-input-form">
             <h2>Info</h2>
-            <form>
-                <input placeholder="First Name" />
-                <input placeholder="Last Name" />
-                <input placeholder="District" />
-                <input placeholder="Phone" />
-                <input placeholder="Office" />
-            </form>
+            <p>{politician ? (politician.name) : 'First Name'}</p>
+            <p>{politician ? (politician.name) : 'Last Name'}</p>
+            <p>{politician ? (politician.district) : 'District'}</p>
+            <p>{politician ? (politician.phone) : 'Phone'}</p>
+            <p>{politician ? (politician.office) : 'Office'}</p>
         </section>
     );
 }

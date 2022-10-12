@@ -41,6 +41,11 @@ body {
           box-shadow: inset 2px 2px #0000004d;
           opacity: 1;
         }
+
+        &.submit-button {
+          color: black;
+          opacity: 1;
+        }
       }
 
       button:hover {
