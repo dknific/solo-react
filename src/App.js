@@ -11,7 +11,7 @@ function App() {
   const [formIsValid, setFormIsValid] = useState(false);
   const [isSenatorMode, setIsSenatorMode] = useState(false);
   const [selectedState, setSelectedState] = useState();
-  const [politicianList, setPoliticianList] = useState([]);
+  const [politicianList, setPoliticianList] = useState();
   const [selectedPolitician, setSelectedPolitician] = useState();
 
   useEffect(() => {
@@ -66,18 +66,18 @@ function App() {
           <button onClick={() => setIsSenatorMode(true)} className={isSenatorMode ? 'active' : ''}>Senators</button>
           <p>from </p>
           <Dropdown options={arrayOfStates} onChange={(event) => handleDropDownChange(event)} />
-          <button disabled={!formIsValid} onClick={() => getPoliticians()} className="submit-button">Search</button>
+          <button disabled={!formIsValid} onClick={() => getPoliticians()} className={`submit-button ${formIsValid && 'submit-valid'}`}>Search</button>
         </div>
-      {
-        isLoading 
-        ? (renderLoadingScreen())
-        : (
+    {
+      isLoading 
+      ? (renderLoadingScreen())
+      : (
         <div className="tools-container">
-          <PoliticianList data={politicianList} showSenators={isSenatorMode} handleClick={handlePoliticianClick} />
+          <PoliticianList data={politicianList} handleClick={handlePoliticianClick} />
           <InfoForm politician={selectedPolitician} />
         </div>
-        )
-      }
+      )
+    }
       </div>
     </div>
   );

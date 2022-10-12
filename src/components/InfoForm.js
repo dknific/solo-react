@@ -14,7 +14,7 @@ export default function InfoForm({ politician }) {
             <p>{politician ? (<a href={politician.link} target="_blank" rel="noreferrer">Website</a>) : 'Website'}</p>
         </>
         ) : (
-            <p>Click on a senator or representative from the list to see their info.</p>
+            <p>Click on a politician from the list to see their info.</p>
         )}
         </section>
     );

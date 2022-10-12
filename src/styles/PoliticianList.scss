@@ -21,6 +21,10 @@
         .table-data-row {
             border-bottom: 2px solid #f4f4f4;
         }
+        .table-data-row:hover {
+            cursor: pointer;
+            background: #b1d9f9;
+        }
 
         .name-cell {
             min-width: 19rem;
