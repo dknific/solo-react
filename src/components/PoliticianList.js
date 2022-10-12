@@ -24,7 +24,7 @@ export default function PoliticianList({ data, handleClick }) {
 
     return (
         <section className="politician-list">
-            <h2>List / {renderHeaderWord()}</h2>
+            <h2>List / <span className="header-word">{renderHeaderWord()}</span></h2>
             <table>
                 <tbody>
                     <tr className="table-header">
