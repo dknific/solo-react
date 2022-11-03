@@ -14,6 +14,7 @@ function App() {
   const [selectedState, setSelectedState] = useState();
   const [politicianList, setPoliticianList] = useState();
   const [selectedPolitician, setSelectedPolitician] = useState();
+  const [fetchDidError, setFetchDidError] = useState(false);
 
   useEffect(() => {
     let isValid = false;
@@ -34,11 +35,18 @@ function App() {
 
   async function getPoliticians() {
     if (formIsValid) {
+      setFetchDidError(false);
       setIsLoading(true);
       setSelectedPolitician();
+
       const searchMode = isSenatorMode ? 'senators' : 'representatives';
       const apiURL = `${baseURL}/${searchMode}/${selectedState}`;
-      const response = await fetch(apiURL).then(res => res.json());
+      const response = await fetch(apiURL)
+        .then(res => res.json())
+        .catch(() => {
+          setFetchDidError(true);
+          setIsLoading(false);
+        });
 
       setPoliticianList(response.results);
       setIsLoading(false);
@@ -49,6 +57,15 @@ function App() {
     return (
       <div className="intro-screen">
         <p>Loading results, please wait...</p>
+      </div>
+    );
+  }
+
+  function renderErrorScreen() {
+    return (
+      <div className="error-screen">
+        <p>Whoops! There was an error reaching the API.</p>
+        <p>See console for more details and try again.</p>
       </div>
     );
   }
@@ -69,16 +86,18 @@ function App() {
             <button disabled={!formIsValid} onClick={() => getPoliticians()} className={`submit-button ${formIsValid && 'submit-valid'}`}>Search</button>
           </div>
         </div>
-    {
-      isLoading 
-      ? (renderLoadingScreen())
-      : (
-        <div className="tools-container">
-          <PoliticianList data={politicianList} handleClick={handlePoliticianClick} />
-          <InfoForm politician={selectedPolitician} />
-        </div>
-      )
-    }
+
+    {fetchDidError && renderErrorScreen()}
+
+    {isLoading && renderLoadingScreen()}
+
+    {!isLoading && !fetchDidError && (
+      <div className="tools-container">
+        <PoliticianList data={politicianList} handleClick={handlePoliticianClick} />
+        <InfoForm politician={selectedPolitician} />
+      </div>
+    )}
+
       </div>
     </div>
   );
